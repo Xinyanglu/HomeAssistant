@@ -21,14 +21,15 @@ def interpret_text(t):
 
 def get_text():
     while True:
-        try:
-            with sr.Microphone() as source:
-                r.adjust_for_ambient_noise(source, duration=0.2)
-                audio = r.listen(source)
-                text = r.recognize_google(audio, key=None, language='en-US')
+        with sr.Microphone() as source:
+            r.adjust_for_ambient_noise(source, duration=0.2)
+            audio = r.listen(source)
 
-        except sr.RequestError as e:
-            text = "Could not request results; {0}".format(e)
+        try:
+            text = r.recognize_google(audio, key=None, language='en-US')
+
+        except sr.RequestError:
+            text = r.recognize_sphinx(audio, language="en-US")
 
         except sr.UnknownValueError:
             text = "unknown error occurred"
