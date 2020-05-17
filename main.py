@@ -51,7 +51,7 @@ def get_text(s):
     return text
 
 
-with sr.Microphone(device_index=1) as source:
+with sr.Microphone(device_index=2) as source:
     r.adjust_for_ambient_noise(source, duration=5)
     print(r.energy_threshold)
     r.dynamic_energy_threshold = False
