@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import RPi.GPIO as GPIO
+import time
 
 r = sr.Recognizer()
 GPIO.setmode(GPIO.BCM)
@@ -13,6 +14,7 @@ GPIO.setup(RED, GPIO.OUT)
 GPIO.setup(GREEN, GPIO.OUT)
 GPIO.setup(LAMP, GPIO.OUT)
 
+
 def interpret_text(command):
     if command == "never mind":
         pass
@@ -20,10 +22,14 @@ def interpret_text(command):
     elif command == "turn on desk light":
         GPIO.output(RED, GPIO.HIGH)
         print("turning on desk light")
+        GPIO.output(LAMP, GPIO.LOW)
+        time.sleep(3)
 
     elif command == "turn off desk light":
         GPIO.output(RED, GPIO.HIGH)
         print("turning off desk light")
+        GPIO.output(LAMP, GPIO.HIGH)
+        time.sleep(3)
 
     else:
         pass
@@ -51,6 +57,9 @@ with sr.Microphone(device_index=1) as source:
     r.dynamic_energy_threshold = False
 
     while True:
+        GPIO.output(RED, GPIO.LOW)
+        GPIO.output(GREEN, GPIO.LOW)
+
         t = get_text(source).lower()
         print(t)
         if t == "hey assistant":
