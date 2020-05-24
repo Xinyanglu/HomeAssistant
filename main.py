@@ -35,8 +35,8 @@ def interpret_text(command):
 
 
 def get_text(s):
-    print('test')
-    audio = r.listen(s)
+    print('say something')
+    audio = r.listen(s, timeout = 3)
 
     try:
         text = r.recognize_google(audio, key=None, language='en-US')
@@ -50,7 +50,7 @@ def get_text(s):
     return text
 
 
-with sr.Microphone(device_index=2) as source:
+with sr.Microphone(device_index=2, sample_rate = 16000, chunk_size = 1024) as source:
     r.adjust_for_ambient_noise(source, duration=5)
     print(r.energy_threshold)
     r.dynamic_energy_threshold = False
