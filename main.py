@@ -13,7 +13,6 @@ GPIO.setup(RED, GPIO.OUT)
 GPIO.setup(GREEN, GPIO.OUT)
 GPIO.setup(LAMP, GPIO.OUT)
 
-
 def interpret_text(command):
     if command == "never mind":
         pass
