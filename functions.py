@@ -21,12 +21,14 @@ def interpret_text(command):
         print("turning on desk light")
         GPIO.output(LAMP, GPIO.LOW)
         time.sleep(3)
+        GPIO.output(RED, GPIO.LOW)
 
     elif command == "turn off desk light":
         GPIO.output(RED, GPIO.HIGH)
         print("turning off desk light")
         GPIO.output(LAMP, GPIO.HIGH)
         time.sleep(3)
+        GPIO.output(RED, GPIO.LOW)
 
     else:
         pass
