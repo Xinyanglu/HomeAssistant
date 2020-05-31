@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from main import interpret_text
+from functions import interpret_text
 app = Flask(__name__, template_folder='templates')
 
 
