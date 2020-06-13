@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
-from functions import interpret_text
+import functions
+functions.setup_pins()
 app = Flask(__name__, template_folder='templates')
 
 
@@ -11,5 +12,5 @@ def my_form():
 @app.route('/getValueFromTextbox', methods=['POST'])
 def get_value():
     value = request.form['text']
-    interpret_text(value)
+    functions.interpret_text(value)
     return render_template('textbox.html')
