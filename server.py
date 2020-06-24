@@ -12,5 +12,7 @@ def my_form():
 @app.route('/getValueFromTextbox', methods=['POST'])
 def get_value():
     value = request.form['text']
-    functions.interpret_text(value)
+    functions.interpret_text(value.lower())
     return render_template('textbox.html')
+if __name__ == "__main__":
+    app.run(port=5000, host="0.0.0.0")
