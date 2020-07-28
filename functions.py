@@ -7,13 +7,15 @@ RED = 12
 GREEN = 16
 LAMP = 26
 
-GPIO.setup(RED, GPIO.OUT)
-GPIO.setup(GREEN, GPIO.OUT)
-GPIO.setup(LAMP, GPIO.OUT)
+
+def setup_pins():
+    GPIO.setup(RED, GPIO.OUT)
+    GPIO.setup(GREEN, GPIO.OUT)
+    GPIO.setup(LAMP, GPIO.OUT)
 
 
 def interpret_text(command):
-    if command == "never mind":
+    if command == "nevermind":
         pass
 
     elif command == "turn on desk light":
@@ -21,6 +23,7 @@ def interpret_text(command):
 
     elif command == "turn off desk light":
         turn_desklight_off()
+
 
     else:
         pass

@@ -2,11 +2,11 @@ import speech_recognition as sr
 import functions
 
 r = sr.Recognizer()
-
+functions.setup_pins()
 
 def get_text(s):
     print('say something')
-    audio = r.listen(s, timeout = 3)
+    audio = r.listen(s)
 
     try:
         text = r.recognize_google(audio, key=None, language='en-US')
@@ -28,6 +28,8 @@ with sr.Microphone(device_index=2, sample_rate = 16000, chunk_size=1024) as sour
     while True:
         t = get_text(source).lower()
         print(t)
-        if t == "hey assistant":
+        if "hey assistant" in t:
+            functions.green_on()
             user_text = get_text(source).lower()
             functions.interpret_text(user_text)
+            functions.green_off()

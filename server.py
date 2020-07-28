@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template
 import functions
+
+functions.setup_pins()
+
 app = Flask(__name__, template_folder='templates')
 
 
