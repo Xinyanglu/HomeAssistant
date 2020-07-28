@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Assistant</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <script type="text/javascript" src="{{url_for('static',filename='scripts/send_form.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
-<!--<form action="/getValueFromTextbox" method="POST">
-            <input name="text" placeholder="Enter text here:">
-            <button type="submit">Submit</button>
-        </form> -->
+
 <div class="container">
     <h2 class="lightHeading">Light Switch</h2>
     <div class="toggle-btn" onclick="this.classList.toggle('active')">
-        <input type="checkbox" class="invis">
+
+        <form action="/getValueFromLightSwitch" id="data" method="get">
+
+            <input type="checkbox" id="light-switch"class="invis" name="light-switch" value="on" onclick="checkLightSwitch()">
+
+        </form>
+
 
         <div class="inner-circle">
         </div>

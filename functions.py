@@ -17,18 +17,10 @@ def interpret_text(command):
         pass
 
     elif command == "turn on desk light":
-        GPIO.output(RED, GPIO.HIGH)
-        print("turning on desk light")
-        GPIO.output(LAMP, GPIO.LOW)
-        time.sleep(3)
-        GPIO.output(RED, GPIO.LOW)
+        turn_desklight_on()
 
     elif command == "turn off desk light":
-        GPIO.output(RED, GPIO.HIGH)
-        print("turning off desk light")
-        GPIO.output(LAMP, GPIO.HIGH)
-        time.sleep(3)
-        GPIO.output(RED, GPIO.LOW)
+        turn_desklight_off()
 
     else:
         pass
@@ -48,3 +40,19 @@ def green_on():
 
 def red_on():
     GPIO.output(RED, GPIO.HIGH)
+
+
+def turn_desklight_on():
+    GPIO.output(RED, GPIO.HIGH)
+    print("turning on desk light")
+    GPIO.output(LAMP, GPIO.LOW)
+    time.sleep(3)
+    GPIO.output(RED, GPIO.LOW)
+
+
+def turn_desklight_off():
+    GPIO.output(RED, GPIO.HIGH)
+    print("turning off desk light")
+    GPIO.output(LAMP, GPIO.HIGH)
+    time.sleep(3)
+    GPIO.output(RED, GPIO.LOW)
