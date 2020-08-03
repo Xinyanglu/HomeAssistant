@@ -1,5 +1,5 @@
 import speech_recognition as sr
-import functions
+from server.server import functions
 
 r = sr.Recognizer()
 functions.setup_pins()

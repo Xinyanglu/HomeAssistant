@@ -1,0 +1,42 @@
+.container{
+    position: absolute;
+    left: 10%;
+    right:10%;
+    width:200px;
+    height: auto;
+}
+
+.toggle-btn{
+    background: gray;
+    width:80px;
+    height:40px;
+    border-radius: 30px;
+    padding:5px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.light-heading{
+    position: relative;
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+    font-family: Verdana;
+    color: gold;
+}
+
+.toggle-btn > .circle{
+    background:white;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    transition: 200ms ease-in-out;
+}
+
+.toggle-btn.active{
+    background: yellow;
+}
+
+.toggle-btn.active > .circle{
+    transform: translate(40px);
+}
